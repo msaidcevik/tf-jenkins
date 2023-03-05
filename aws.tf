@@ -7,9 +7,7 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
+provider "aws" {}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -69,4 +67,12 @@ resource "aws_instance" "tf-ec2" {
   }
 
   user_data = "${file("./install-docker.sh")}"
+}
+
+output "server_public_ip" {
+  value = aws_instance.tf-ec2.public_ip
+}
+
+output "server_private_ip" {
+  value = aws_instance.tf-ec2.private_ip
 }
