@@ -23,3 +23,7 @@ sudo systemctl enable docker
 sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+# install docker image and run
+docker pull said23/roman-app:2.0
+docker run -d --name roman_app -p 80:80 said23/roman-app:2.0
+
